@@ -18,7 +18,7 @@
                             </button>
                         </li>
                         <li>
-                            <button class="dropdown-item" @click="export_table">
+                            <button class="dropdown-item" @click="download">
                                 <span class="bi bi-download me-2"></span>
                                 <span>Download</span>
                             </button>
@@ -28,7 +28,7 @@
             </div>
         </div>
     </div>
-    <input ref="table_input" type="file" accept="text/markdown">
+    <input ref="table_input" type="file" accept="text/markdown" @change="handle_change">
 </template>
 
 <script setup>
@@ -36,12 +36,17 @@ import { ref } from 'vue';
 import { Dropdown } from 'bootstrap';
 
 const table_input = ref(null);
+const emit = defineEmits(['import_table', 'download']);
 
 async function import_table() {
     table_input.value.click();
 }
 
-async function export_table() {
-    //
+async function handle_change() {
+    emit('import_table', table_input.value.files[0]);
+}
+
+async function download() {
+    emit('download');
 }
 </script>

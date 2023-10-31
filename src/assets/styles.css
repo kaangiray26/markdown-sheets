@@ -47,6 +47,7 @@ input[type="file"] {
 
 .list-group-item-action {
     cursor: pointer;
+    white-space: nowrap !important;
 }
 
 /* Table styles */
@@ -84,11 +85,23 @@ td:hover {
 }
 
 .table-index {
-    font-weight: 400;
+    font-weight: 700;
     min-width: 46px !important;
     min-height: 21px !important;
     padding: 0.15rem !important;
-    user-select: none;
+}
+
+.table-index-input {
+    top: 0;
+    left: 0;
+    border: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0.15rem !important;
+    position: absolute;
+    background-color: transparent;
+    font-size: var(--markdown-font-size);
+    cursor: default;
 }
 
 .table-input {
@@ -105,6 +118,10 @@ td:hover {
 
 .table-input:hover {
     cursor: default;
+}
+
+.table-input:focus {
+    cursor: text;
 }
 
 .table-origin {
